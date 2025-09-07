@@ -5,3 +5,4 @@ requests
 pydantic<2
 tos
 streamlit_autorefresh
+curl
