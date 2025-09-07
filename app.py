@@ -141,18 +141,14 @@ def upload_image_to_tos(uploaded_file):
         if hasattr(resp, "status_code") and resp.status_code != 200:
             raise Exception(f"TOS put_object returned status {resp.status_code}")
         
-        # 使用 V2 SDK 的 presign_get_object 方法生成预签名 URL
-        url = client.pre_signed_url(
-            HttpMethodType.Http_Method_Get, 
-            bucket_name, 
-            object_key
-        )
+        # Generate presigned URL
+        url = client.pre_signed_url(tos.HttpMethodType.Http_Method_Put, bucket=bucket_name, key=object_key, expires=3600)
         # url = tos_client.presign_get_object(
         #     bucket=TOS_BUCKET,
         #     key=object_key,
         #     expires=3600
         # )
-        # return url
+        return url
     except Exception as e:
         raise Exception(f"Failed to upload image to TOS: {e}")
 
