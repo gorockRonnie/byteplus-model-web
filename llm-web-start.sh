@@ -51,19 +51,6 @@ check_status() {
     fi
 }
 
-health_check_loop() {
-    echo "[INFO] Starting health check loop (every $CHECK_INTERVAL seconds)..."
-    while true; do
-        sleep $CHECK_INTERVAL
-        if curl -s --max-time 5 "$HEALTH_URL" > /dev/null; then
-            echo "[HEALTH] Service healthy at $HEALTH_URL"
-        else
-            echo "[WARN] Service unhealthy! Restarting container..."
-            docker restart $CONTAINER_NAME
-        fi
-    done
-}
-
 # =========================
 # Main script
 # =========================
@@ -73,6 +60,3 @@ build_image
 remove_old_container
 start_container
 check_status
-
-# Start health check loop
-health_check_loop
