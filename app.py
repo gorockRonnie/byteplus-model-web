@@ -142,8 +142,8 @@ def upload_image_to_tos(uploaded_file):
             raise Exception(f"TOS put_object returned status {resp.status_code}")
         
         # Generate presigned URL
-        url = tos_client.pre_signed_url(HttpMethodType.Http_Method_Get, bucket_name, object_key)
-        return url
+        url = tos_client.pre_signed_url(HttpMethodType.Http_Method_Get, TOS_BUCKET, object_key, 3600)
+        return url.signed_url
     except Exception as e:
         raise Exception(f"Failed to upload image to TOS: {e}")
 
