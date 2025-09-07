@@ -7,6 +7,7 @@ import threading
 import streamlit as st
 from streamlit_autorefresh import st_autorefresh
 from tos import TosClientV2
+from tos import HttpMethodType
 from io import BytesIO
 import tos
 
