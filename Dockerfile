@@ -21,3 +21,7 @@ ENTRYPOINT ["streamlit", "run", "app.py", "--server.port=8501", "--server.addres
 # AK SK for TOS
 ENV TOS_AK=<your ak>
 ENV TOS_SK=<your sk>
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=5s --retries=3 \
+    CMD curl -f http://localhost:8501/ || exit 1
