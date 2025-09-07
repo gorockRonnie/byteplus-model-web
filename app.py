@@ -1,4 +1,3 @@
-# app.py
 import os
 import time
 import json
@@ -27,7 +26,7 @@ if TOS_AK and TOS_SK:
     tos_client = tos.TosClientV2(TOS_AK, TOS_SK, TOS_ENDPOINT, TOS_REGION)
 else:
     tos_client = None
-    st.warning("⚠️ TOS_AK 或 TOS_SK 未设置，上传本地图片功能不可用")
+    st.warning("⚠️ TOS_AK or TOS_SK is not set，can't upload local image")
 
 # ===== Streamlit Config =====
 st.set_page_config(page_title="Model Hub UI (BytePlus)", layout="wide")
@@ -269,7 +268,7 @@ with tab_video:
                     st.image(uploaded_file, caption="Local preview")
                     if not tos_client:
                         st.error("TOS client is not initialized. Cannot upload local image.")
-                        uploaded_file = None  # 禁止上传
+                        uploaded_file = None  # Uploading restricted
 
         go_video = st.button("Create Task")
 
@@ -287,7 +286,7 @@ with tab_video:
                     prompt_with_params = f"{prompt_text.strip()} --resolution {resolution} --duration {duration}"
                     image_url = None
 
-                    # 统一使用同一个视频模型
+                    # Same model for t2v and i2v
                     if mode == "Text-to-Video (T2V)":
                         create_resp = create_video_task_t2v(video_model, api_key, prompt_with_params)
                     else:
