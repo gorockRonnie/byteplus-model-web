@@ -6,8 +6,6 @@
 CONTAINER_NAME="llm-web"
 IMAGE_NAME="llm-web"
 PORT=8501
-CHECK_INTERVAL=30   # health check interval (seconds)
-HEALTH_URL="http://localhost:$PORT"
 
 # =========================
 # Functions
