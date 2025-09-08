@@ -254,7 +254,7 @@ with tab_video:
         mode = st.radio("Mode", ["Text-to-Video (T2V)", "Image-to-Video (I2V)"])
         prompt_text = st.text_area("Prompt (scene description)", height=120)
         resolution = st.selectbox("Resolution", ["480p", "720p", "1080p"], index=1)
-        duration = st.number_input("Duration (seconds)", 1, 30, value=5)
+        duration = st.number_input("Duration (seconds)", 1, 12, value=5)
         poll_interval = st.slider("Poll interval (seconds)", 1, 30, 5, 1)
 
         uploaded_file = None
