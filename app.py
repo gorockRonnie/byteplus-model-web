@@ -222,7 +222,7 @@ with tab_image:
     col_left, col_right = st.columns([1,1.2])
     with col_left:
         prompt = st.text_area("Prompt", height=150, key="img_prompt")
-        size = st.selectbox("Size", ["1024x1024(1:1)","864x1152(3:4)","1152x864(4:3)","1280x720(16:9)","720x1280 (9:16)","832x1248 (2:3)","1248x832 (3:2)","1512x648 (21:9)"])
+        size = st.selectbox("Size", ["1024x1024(1:1)","864x1152","1152x864","1280x720","720x1280","832x1248","1248x832","1512x648"])
         n = st.number_input("Number of Images",1,4,1)
         go_img = st.button("Generate Image")
     with col_right:
